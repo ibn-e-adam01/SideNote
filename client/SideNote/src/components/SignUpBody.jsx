@@ -101,7 +101,7 @@ const SignUpBody = () => {
 
 
                 {IsLoading == false && 
-                    <p>Sign In</p>
+                    <p>Sign Up</p>
                 } {IsLoading == true &&
                     
                         <div className="w-4 h-4 rounded-full border-2 border-zinc-500 border-t-zinc-950 animate-spin" />

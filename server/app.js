@@ -17,15 +17,18 @@ const commentModel = require('./models/comment');
 const requireAuth = require('./middlewares/auth');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://thesidenote.vercel.app'
+]
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(cors({
-    origin: [ 'http://localhost:5173',
-        process.env.NODE_FRONTEND_URL
-    ],
-    credentials: true
+    origin: allowedOrigins,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 }));
 
 app.post('/createAccount', async (req, res) => {
