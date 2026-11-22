@@ -28,7 +28,7 @@ const SignUpBody = () => {
         }
 
     try{
-        let res = await axios.post(`http://${API_URL}/createAccount`, data, {
+        let res = await axios.post(`${API_URL}/createAccount`, data, {
             headers: {
                 'Content-Type':'application/json'
             }, withCredentials: true

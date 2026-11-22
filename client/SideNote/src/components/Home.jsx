@@ -31,7 +31,7 @@ const Home = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPost, add
       Post
     }
 
-    let res = await axios.post(`http://${API_URL}/createPost`, postData, {
+    let res = await axios.post(`${API_URL}/createPost`, postData, {
       headers: {
         'Content-Type':'application/json'
       }, withCredentials:true

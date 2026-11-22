@@ -16,7 +16,7 @@ const ProfileBody = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPo
   const API_URL = import.meta.env.VITE_B_API_URL;
 
   const handleProfileUpdate = async (FormData) => {
-    let res = await axios.patch(`http://${API_URL}/updateProfile`, FormData, {
+    let res = await axios.patch(`${API_URL}/updateProfile`, FormData, {
       withCredentials:true
     });
     if(res?.data?.success === true){
@@ -27,7 +27,7 @@ const ProfileBody = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPo
   
 
   const deletePost = async (postId) => {
-    let res = await axios.delete(`http://${API_URL}/deletePost/${postId}`, {
+    let res = await axios.delete(`${API_URL}/deletePost/${postId}`, {
       withCredentials:true
     });
     if(res?.data?.success === true){

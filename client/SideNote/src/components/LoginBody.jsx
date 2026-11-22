@@ -27,7 +27,7 @@ const LoginBody = () => {
 
         try{
 
-        let res = await axios.post(`http://${API_URL}/signIn`, data, {
+        let res = await axios.post(`${API_URL}/signIn`, data, {
             headers: {
                 'Content-Type':'application/json'
             }, withCredentials: true

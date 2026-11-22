@@ -23,7 +23,7 @@ const MainBody = () => {
 
 
   const Logout = async () => {
-        let res = await axios.post(`http://${API_URL}/logout`, {}, {
+        let res = await axios.post(`${API_URL}/logout`, {}, {
             headers:{
                 'Content-Type':'application/json'
             }, withCredentials:true
@@ -47,7 +47,7 @@ requestAnimationFrame(raf);
 
   const getPostData = async () => {
     try{
-        let res = await axios.get(`http://${API_URL}/getposts`,{
+        let res = await axios.get(`${API_URL}/getposts`,{
           withCredentials:true
         });
   
@@ -63,7 +63,7 @@ requestAnimationFrame(raf);
     }
 
   const getAllPostsData = async () => {
-        let res = await axios.get(`http://${API_URL}/getAllposts`,{
+        let res = await axios.get(`${API_URL}/getAllposts`,{
           withCredentials:true
         });
   
@@ -75,7 +75,7 @@ requestAnimationFrame(raf);
       const getUserData = async () => {
 
         try{
-        let res = await axios.get(`http://${API_URL}/getuser`,{
+        let res = await axios.get(`${API_URL}/getuser`,{
           withCredentials:true
         });
   
@@ -92,7 +92,7 @@ requestAnimationFrame(raf);
 
 
     const addLike = async (postId) => {
-    let res = await axios.post(`http://${API_URL}/addLike/${postId}`, {}, {
+    let res = await axios.post(`${API_URL}/addLike/${postId}`, {}, {
       headers: {
         'Content-Type':'application/json'
       }, withCredentials:true
@@ -106,7 +106,7 @@ requestAnimationFrame(raf);
 
   const removeLike = async (postId) => {
 
-    let res = await axios.patch(`http://${API_URL}/removeLike/${postId}`, {}, {
+    let res = await axios.patch(`${API_URL}/removeLike/${postId}`, {}, {
       headers: {
         'Content-Type':'application/json'
       }, withCredentials:true

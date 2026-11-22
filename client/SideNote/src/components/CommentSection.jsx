@@ -35,7 +35,7 @@ const CommentSection = ({
       setIsLoading(true);
 
       const res = await axios.get(
-        `http://${API_URL}/getComments/${CmtPostId}`,
+        `${API_URL}/getComments/${CmtPostId}`,
         { withCredentials: true }
       );
 
@@ -64,7 +64,7 @@ const CommentSection = ({
       setIsSending(true);
 
       const res = await axios.post(
-        `http://${API_URL}/createComment/${CmtPostId}`,
+        `${API_URL}/createComment/${CmtPostId}`,
         { Comment: trimmedComment },
         {
           headers: {
