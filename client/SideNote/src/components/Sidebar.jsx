@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import React from 'react'
 import axios from 'axios';
 import logo from '../assets/sidenote-logo-horizontal-transparent.png'
+//you've to use images like this for production and not as \src\assets\image.png!
 
 const Sidebar = ({isMenuOpen, setisMenuOpen, Logout, AllPosts, setAllPosts, getPostData, getUserData, Posts, setPosts, User, setUser, isHomeOpen, setisHomeOpen, isProfileOpen, setisProfileOpen}) => {
   
