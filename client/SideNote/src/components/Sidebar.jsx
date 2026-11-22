@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import React from 'react'
 import axios from 'axios';
+import logo from './assets/sidenote-logo-horizontal-transparent.png'
 
 const Sidebar = ({isMenuOpen, setisMenuOpen, Logout, AllPosts, setAllPosts, getPostData, getUserData, Posts, setPosts, User, setUser, isHomeOpen, setisHomeOpen, isProfileOpen, setisProfileOpen}) => {
   
@@ -12,7 +13,7 @@ const Sidebar = ({isMenuOpen, setisMenuOpen, Logout, AllPosts, setAllPosts, getP
     <div className='h-screen sticky top-0 self-start w-2/10 lg:w-3/10 hidden border-r border-zinc-700 gap-4 px-4 py-1.5 lg:flex flex-col items-center justify-start'>
     
     <div className='w-9/10 border-b border-zinc-800 h-auto py-1 flex items-center justify-center'>
-        <img src="\src\assets\sidenote-logo-horizontal-transparent.png" alt="" />
+        <img src={logo} alt="SideNote" />
     </div>
 
     <div className='flex text-zinc-200 font-semibold tracking-tighter text-2xl flex-col items-center justify-center w-full gap-3'>
