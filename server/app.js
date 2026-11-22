@@ -16,11 +16,14 @@ const postModel = require('./models/post');
 const commentModel = require('./models/comment');
 const requireAuth = require('./middlewares/auth');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: [ 'http://localhost:5173',
+    ],
     credentials: true
 }));
 
@@ -56,8 +59,15 @@ app.post('/createAccount', async (req, res) => {
             password: hash
             })
 
-            let token = jwt.sign({_id:user._id, email: Email}, process.env.JWT_SECRET);
-            res.cookie('token', token).json({
+            let token = jwt.sign({_id:user._id, email: Email}, process.env.JWT_SECRET, {
+                expiresIn: '30d'
+            });
+            res.cookie('token', token, {
+                httpOnly: true,
+                secure:isProduction,
+                sameSite: isProduction ? 'none' : 'lax',
+                maxAge: 30 * 24 * 60 * 60 * 1000
+            }).json({
                 message:'successfully account created',
                 success: true,
                 user
@@ -91,11 +101,18 @@ app.post('/signIn', async (req, res) => {
         })
     }
 
-    let token = jwt.sign({_id: user._id, email: Email}, process.env.JWT_SECRET);
+    let token = jwt.sign({_id: user._id, email: Email}, process.env.JWT_SECRET, {
+                expiresIn: '30d'
+            });
 
     bcrypt.compare(Password, user.password, (err, result) => {
         if(result){
-            return res.cookie('token', token).status(200).json({
+            return res.cookie('token', token, {
+                httpOnly: true,
+                secure:isProduction,
+                sameSite: isProduction ? 'none' : 'lax',
+                maxAge: 30 * 24 * 60 * 60 * 1000
+            }).status(200).json({
                 message:'successfully logged in!',
                 success:true,
                 user
@@ -195,7 +212,12 @@ app.post('/createPost', async (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.cookie('token', '').status(200).json({
+    res.cookie('token', '', {
+                httpOnly: true,
+                secure:isProduction,
+                sameSite: isProduction ? 'none' : 'lax',
+                maxAge: 30 * 24 * 60 * 60 * 1000
+            }).status(200).json({
         message:'successfully logged out!',
         success: true
     })
