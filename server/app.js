@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(cors({
     origin: [ 'http://localhost:5173',
-        'https://thesidenote.vercel.app'
+        process.env.NODE_FRONTEND_URL
     ],
     credentials: true
 }));
