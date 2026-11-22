@@ -170,7 +170,7 @@ const Home = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPost, add
       </div>
 
           
-      <div className='Posts w-full h-auto lg:px-0 md:px-1.5 py-1.5 gap-3 flex flex-col justify-center items-start'>
+      <div className='Posts w-full h-auto lg:px-0 md:px-1.5 px-3 py-1.5 gap-3 flex flex-col justify-center items-start'>
           {User.length > 0 && reversedPosts?.length > 0 && reversedPosts.map((post) => {
             // console.log("User: \n", User);
             // console.log("Post Likes: \n", post.likes);
