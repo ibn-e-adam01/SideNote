@@ -22,6 +22,8 @@ const CommentSection = ({
   const [isSending, setIsSending] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
+  const API_URL = import.meta.env.VITE_B_API_URL;
+
   // Your existing API response structure:
   // res.data.Comments -> post object -> comments array
   const commentList = Comments?.[0]?.comments || [];
@@ -33,7 +35,7 @@ const CommentSection = ({
       setIsLoading(true);
 
       const res = await axios.get(
-        `http://localhost:3000/getComments/${CmtPostId}`,
+        `http://${API_URL}/getComments/${CmtPostId}`,
         { withCredentials: true }
       );
 
@@ -62,7 +64,7 @@ const CommentSection = ({
       setIsSending(true);
 
       const res = await axios.post(
-        `http://localhost:3000/createComment/${CmtPostId}`,
+        `http://${API_URL}/createComment/${CmtPostId}`,
         { Comment: trimmedComment },
         {
           headers: {

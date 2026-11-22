@@ -15,6 +15,8 @@ const LoginBody = () => {
     const [IsLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
+    const API_URL = import.meta.env.VITE_B_API_URL;
+
     const submitUserData = async (e) => {
 
         e.preventDefault();
@@ -25,7 +27,7 @@ const LoginBody = () => {
 
         try{
 
-        let res = await axios.post('http://localhost:3000/signIn', data, {
+        let res = await axios.post(`http://${API_URL}/signIn`, data, {
             headers: {
                 'Content-Type':'application/json'
             }, withCredentials: true

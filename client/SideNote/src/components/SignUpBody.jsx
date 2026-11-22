@@ -16,6 +16,8 @@ const SignUpBody = () => {
     const [IsLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
+    const API_URL = import.meta.env.VITE_B_API_URL;
+
     const submitUserData = async (e) => {
 
         e.preventDefault();
@@ -26,7 +28,7 @@ const SignUpBody = () => {
         }
 
     try{
-        let res = await axios.post('http://localhost:3000/createAccount', data, {
+        let res = await axios.post(`http://${API_URL}/createAccount`, data, {
             headers: {
                 'Content-Type':'application/json'
             }, withCredentials: true

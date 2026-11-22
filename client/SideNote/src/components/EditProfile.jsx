@@ -15,6 +15,8 @@ const EditProfile = ({
     bio: initialData?.bio || ''
   });
 
+  const API_URL = import.meta.env.VITE_B_API_URL;
+
   const [error, setError] = useState('');
 
   useEffect(() => {

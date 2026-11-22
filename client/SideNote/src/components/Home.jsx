@@ -16,6 +16,8 @@ const Home = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPost, add
   const [searchQuery, setSearchQuery] = useState("");
   const reversedPosts = AllPosts ? [...AllPosts].reverse() : [];
 
+  const API_URL = import.meta.env.VITE_B_API_URL;
+
   const filteredPosts = AllPosts.filter(post => 
     post.post?.toLowerCase().includes(searchQuery.toLowerCase())
   ); // need post? instead of just post as some post may be empty and hence will crash the app.
@@ -29,7 +31,7 @@ const Home = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPost, add
       Post
     }
 
-    let res = await axios.post('http://localhost:3000/createPost', postData, {
+    let res = await axios.post(`http://${API_URL}/createPost`, postData, {
       headers: {
         'Content-Type':'application/json'
       }, withCredentials:true
