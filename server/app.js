@@ -16,7 +16,7 @@ const postModel = require('./models/post');
 const commentModel = require('./models/comment');
 const requireAuth = require('./middlewares/auth');
 
-const isProduction = process.env.NODE_ENV === 'production';
+// const isProduction = process.env.NODE_ENV === 'production';
 const allowedOrigins = [
     'http://localhost:5173',
     'https://thesidenote.vercel.app'
@@ -68,8 +68,8 @@ app.post('/createAccount', async (req, res) => {
             });
             res.cookie('token', token, {
                 httpOnly: true,
-                secure:isProduction,
-                sameSite: isProduction ? 'none' : 'lax',
+                secure:true,
+                sameSite: 'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000
             }).json({
                 message:'successfully account created',
@@ -113,8 +113,8 @@ app.post('/signIn', async (req, res) => {
         if(result){
             return res.cookie('token', token, {
                 httpOnly: true,
-                secure:isProduction,
-                sameSite: isProduction ? 'none' : 'lax',
+                secure:true,
+                sameSite: 'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000
             }).status(200).json({
                 message:'successfully logged in!',
@@ -218,8 +218,8 @@ app.post('/createPost', async (req, res) => {
 app.post('/logout', (req, res) => {
     res.cookie('token', '', {
                 httpOnly: true,
-                secure:isProduction,
-                sameSite: isProduction ? 'none' : 'lax',
+                secure:true,
+                sameSite: 'none',
                 maxAge: 30 * 24 * 60 * 60 * 1000
             }).status(200).json({
         message:'successfully logged out!',
