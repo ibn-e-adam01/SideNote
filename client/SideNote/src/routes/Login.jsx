@@ -9,6 +9,7 @@ const Login = () => {
 
 
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_B_API_URL;
 
   const getUserData = async () => {
 
@@ -23,7 +24,7 @@ const Login = () => {
         } catch (err) {
       if (err.response && err.response.status === 401) {
         // Redirect them away so they don't see an empty page glitch
-        navigate('/'); 
+        navigate('/signin'); 
       }
     }
   }

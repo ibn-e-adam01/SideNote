@@ -8,6 +8,7 @@ const Signup = () => {
 
 
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_B_API_URL;
 
   const getUserData = async () => {
 
