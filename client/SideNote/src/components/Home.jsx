@@ -178,7 +178,7 @@ const Home = ({removeLike, CmtPostId, setCmtPostId, LikedPost, setLikedPost, add
               (id) => id.toString() === User[0]._id.toString()
             );
             return(
-        <div className='eachPost rounded-md border bg-zinc-950 hover:bg-zinc-900 active:bg-zinc-900 border-zinc-800 px-6 py-3 flex flex-col items-start gap-4 justify-center md:w-9/10 w-10/11 mx-1.5 bg'>
+        <div className='eachPost rounded-md border bg-zinc-950 hover:bg-zinc-900 active:bg-zinc-900 border-zinc-800 px-6 py-3 flex flex-col items-start gap-4 justify-center md:w-9/10 w-full md:mx-1.5 bg'>
 
           <div className='flex items-center w-full justify-center gap-3'>
             <div className='flex items-center justify-start gap-3 w-full'>
